@@ -1,12 +1,12 @@
 /* General */
 @font-face {
   font-family: "Roboto";
-  src: url("assets/fonts/Roboto-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
   font-weight: 400;
 }
 @font-face {
   font-family: "Roboto";
-  src: url("assets/fonts/Roboto-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 :root {
@@ -27,6 +27,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -106,12 +107,15 @@ body section.newsletter div.newsletter-left-side form button {
 body section.newsletter div.newsletter-right-side {
   width: 45%;
 }
-body section.newsletter div.newsletter-right-side img {
+body section.newsletter div.newsletter-right-side img.image-desktop {
   display: block;
   width: 100%;
 }
+body section.newsletter div.newsletter-right-side img.image-mobile {
+  display: none;
+}
 body footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -119,10 +123,141 @@ body footer {
   padding: 10px;
   text-align: center;
   background-color: var(--white);
+  border-radius: 6px 6px 0 0;
 }
 body footer a {
   color: var(--tomato);
   text-decoration: none;
 }
 
-/* Responsive : phone *//*# sourceMappingURL=style.css.map */
+/* Responsive : phone */
+@media (max-width: 375px) {
+  body {
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--white);
+  }
+  body section.newsletter {
+    width: 100%;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+    padding: 0;
+    border-radius: 0;
+  }
+  body section.newsletter div.newsletter-left-side {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    order: 2;
+    margin: 0;
+    padding: 0 20px;
+  }
+  body section.newsletter div.newsletter-left-side h1 {
+    font-size: 38px;
+  }
+  body section.newsletter div.newsletter-left-side p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  body section.newsletter div.newsletter-left-side ul li {
+    font-size: 16px;
+    letter-spacing: normal;
+    line-height: 22px;
+    align-items: flex-start;
+  }
+  body section.newsletter div.newsletter-left-side ul li img {
+    width: 18px;
+  }
+  body section.newsletter div.newsletter-left-side form label {
+    letter-spacing: normal;
+  }
+  body section.newsletter div.newsletter-left-side form input {
+    font-size: 16px;
+  }
+  body section.newsletter div.newsletter-left-side form button {
+    font: 400 16px "Roboto", sans-serif;
+  }
+  body section.newsletter div.newsletter-right-side {
+    width: 100%;
+    order: 1;
+  }
+  body section.newsletter div.newsletter-right-side img.image-desktop {
+    display: none;
+  }
+  body section.newsletter div.newsletter-right-side img.image-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  body footer {
+    position: relative;
+    background-color: var(--dark-slate-grey);
+    color: var(--white);
+  }
+}
+/* Responsive : tablet */
+@media (min-width: 376px) and (max-width: 768px) {
+  body {
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--white);
+  }
+  body section.newsletter {
+    width: 100%;
+    flex-direction: column;
+    margin: 0 0 40px 0;
+    padding: 0;
+    border-radius: 0;
+  }
+  body section.newsletter div.newsletter-left-side {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    order: 2;
+    margin: 0;
+    padding: 0 20px;
+  }
+  body section.newsletter div.newsletter-left-side h1 {
+    font-size: 52px;
+  }
+  body section.newsletter div.newsletter-left-side p {
+    font-size: 20px;
+  }
+  body section.newsletter div.newsletter-left-side ul li {
+    font-size: 20px;
+    letter-spacing: normal;
+    line-height: 22px;
+    align-items: flex-start;
+  }
+  body section.newsletter div.newsletter-left-side ul li img {
+    width: 22px;
+  }
+  body section.newsletter div.newsletter-left-side form label {
+    font-size: 16px;
+    letter-spacing: normal;
+  }
+  body section.newsletter div.newsletter-left-side form input {
+    font-size: 20px;
+  }
+  body section.newsletter div.newsletter-left-side form button {
+    font: 400 20px "Roboto", sans-serif;
+  }
+  body section.newsletter div.newsletter-right-side {
+    width: 100%;
+    order: 1;
+  }
+  body section.newsletter div.newsletter-right-side img.image-desktop {
+    display: none;
+  }
+  body section.newsletter div.newsletter-right-side img.image-mobile {
+    display: block;
+    width: 100%;
+    margin-bottom: 35px;
+  }
+  body footer {
+    width: 100%;
+    position: relative;
+    background-color: var(--dark-slate-grey);
+    color: var(--white);
+  }
+}/*# sourceMappingURL=style.css.map */
