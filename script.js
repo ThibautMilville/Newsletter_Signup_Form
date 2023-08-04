@@ -1,32 +1,65 @@
-class form_validation {
+// Form validation
+class FormValidation {
   constructor() {
+    // Newsletter block
+    this.newsletterBlock = document.querySelector('.newsletter');
     this.form = document.getElementById('newsletter');
-    this.email = document.getElementById('newsletter-email').value;
+    this.emailInput = document.getElementById('newsletter-input-email');
+    this.errorMessage = document.getElementById('error-message');
+
+    // Success block
+    this.successBlock = document.querySelector('.success-message');
+    this.emailRegistered = document.getElementById('email-registered');
+    this.dismissButton = document.getElementById('dismiss-button');
+
+    // Bind event listener to the form submit
+    this.form.addEventListener('submit', this.handleSubmit.bind(this));
+
+    // Bind event listener to the dismiss button
+    this.dismissButton.addEventListener('click', this.dismissSuccessMessage.bind(this));
   }
 
   // Check email is valid
-  checkEmail(input) {
-    const valid_email = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+  checkEmail(email) {
+    const validEmailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
-    if (valid_email.test(input)) {
-      this.showSuccess(input);
-    }
-    else {
-      this.showError(input, 'Email is not valid');
+    return validEmailRegex.test(email);
+  }
+
+  // Show input success
+  showSuccess(email) {
+    this.newsletterBlock.style.display = 'none';
+    this.successBlock.style.display = 'block';
+    this.emailRegistered.innerHTML = email;
+  }
+
+  // Show input error message
+  showError() {
+    this.errorMessage.style.display = 'block';
+    this.emailInput.classList.add('error');
+  }
+
+  // Handle form submit
+  handleSubmit(e) {
+    e.preventDefault();
+
+    // Get email value
+    const email = this.emailInput.value;
+
+    // Check email is valid
+    if (this.checkEmail(email)) {
+      this.showSuccess(email);
+    } else {
+      this.showError();
     }
   }
 
-  // Event listeners
-  eventListeners() {
-    this.form.addEventListener('submit', (e) => {
-      console.log('Form submitted');
-      e.preventDefault();
-  
-      // Check email is valid
-      this.checkEmail(this.email);
-    });
+  dismissSuccessMessage(e) {
+    e.preventDefault();
+
+    this.successBlock.style.display = 'none';
+    this.newsletterBlock.style.display = 'flex';
   }
 }
 
-const form = new form_validation();
-form.eventListeners();
+const form = new FormValidation();

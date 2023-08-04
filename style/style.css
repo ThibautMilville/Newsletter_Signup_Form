@@ -9,9 +9,20 @@
   src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;
 }
+@property --colorButtonHover1 {
+  syntax: "<color>";
+  initial-value: hsl(234, 29%, 20%);
+  inherits: false;
+}
+@property --colorButtonHover2 {
+  syntax: "<color>";
+  initial-value: hsl(234, 29%, 20%);
+  inherits: false;
+}
 :root {
   /* Primary */
   --tomato: hsl(4, 100%, 67%);
+  --rose: hsl(345.78, 100%, 66.08%);
   /* Neutral */
   --dark-slate-grey: hsl(234, 29%, 20%);
   --charcoal-grey: hsl(235, 18%, 26%);
@@ -55,7 +66,7 @@ body section.newsletter div.newsletter-left-side h1 {
   color: var(--dark-slate-grey);
   margin-bottom: 22px;
 }
-body section.newsletter div.newsletter-left-side p {
+body section.newsletter div.newsletter-left-side p.desc {
   font: 700 14px "Roboto", sans-serif;
   letter-spacing: -0.4px;
   color: var(--charcoal-grey);
@@ -83,11 +94,22 @@ body section.newsletter div.newsletter-left-side form {
   flex-direction: column;
   width: 100%;
 }
-body section.newsletter div.newsletter-left-side form label {
-  font: 700 12px "Roboto", sans-serif;
-  letter-spacing: -0.8px;
-  color: var(--dark-slate-grey);
+body section.newsletter div.newsletter-left-side form div.label-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 8px;
+}
+body section.newsletter div.newsletter-left-side form div.label-message label {
+  font: 700 12px "Roboto", sans-serif;
+  letter-spacing: -0.6px;
+  color: var(--dark-slate-grey);
+}
+body section.newsletter div.newsletter-left-side form div.label-message p {
+  display: none;
+  font: 700 12px "Roboto", sans-serif;
+  letter-spacing: -0.6px;
+  color: var(--tomato);
 }
 body section.newsletter div.newsletter-left-side form input {
   padding: 14px 18px;
@@ -95,14 +117,9 @@ body section.newsletter div.newsletter-left-side form input {
   border-radius: 6px;
   margin-bottom: 18px;
 }
-body section.newsletter div.newsletter-left-side form button {
-  width: 100%;
-  background-color: var(--dark-slate-grey);
-  color: var(--white);
-  padding: 14px 0px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+body section.newsletter div.newsletter-left-side form input:focus {
+  outline: none;
+  border: 1px solid var(--charcoal-grey);
 }
 body section.newsletter div.newsletter-right-side {
   width: 45%;
@@ -113,6 +130,33 @@ body section.newsletter div.newsletter-right-side img.image-desktop {
 }
 body section.newsletter div.newsletter-right-side img.image-mobile {
   display: none;
+}
+body section.success-message {
+  display: none;
+  width: 350px;
+  background-color: var(--white);
+  padding: 40px 40px;
+  border-radius: 25px;
+}
+body section.success-message img {
+  width: 42px;
+  margin-bottom: 20px;
+}
+body section.success-message h1 {
+  font: 700 42px "Roboto", sans-serif;
+  line-height: 42px;
+  color: var(--dark-slate-grey);
+  margin-bottom: 20px;
+}
+body section.success-message p {
+  font: 400 14px "Roboto", sans-serif;
+  color: var(--charcoal-grey);
+  line-height: 20px;
+  margin-bottom: 25px;
+}
+body section.success-message p span {
+  color: var(--dark-slate-grey);
+  font-weight: 700;
 }
 body footer {
   position: fixed;
@@ -128,6 +172,34 @@ body footer {
 body footer a {
   color: var(--tomato);
   text-decoration: none;
+}
+
+button {
+  width: 100%;
+  background: linear-gradient(90deg, var(--colorButtonHover1) 0%, var(--colorButtonHover2) 100%);
+  color: var(--white);
+  padding: 14px 0px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: --colorButtonHover1 0.8s, --colorButtonHover2 0.8s, box-shadow 0.8s;
+}
+button:hover {
+  --colorButtonHover1: var(--rose);
+  --colorButtonHover2: var(--tomato);
+  box-shadow: 0px 10px 30px 0px hsl(4, 75%, 67%);
+}
+
+input.error {
+  border: 1px solid var(--tomato) !important;
+  color: var(--tomato);
+  background-color: rgba(255, 99, 71, 0.15);
+}
+input.error::-moz-placeholder {
+  color: var(--tomato);
+}
+input.error::placeholder {
+  color: var(--tomato);
 }
 
 /* Responsive : phone */
@@ -188,6 +260,21 @@ body footer a {
     display: block;
     width: 100%;
     margin-bottom: 35px;
+  }
+  body section.success-message {
+    height: 100vh;
+    width: 100%;
+    padding: 0 20px;
+    margin: 100px 0 0 0;
+  }
+  body section.success-message img {
+    width: 52px;
+  }
+  body section.success-message p {
+    font: 400 18px "Roboto", sans-serif;
+  }
+  body section.success-message button {
+    margin: 85% 0 0 0;
   }
   body footer {
     position: relative;
@@ -253,6 +340,21 @@ body footer a {
     display: block;
     width: 100%;
     margin-bottom: 35px;
+  }
+  body section.success-message {
+    height: 100vh;
+    width: 100%;
+    padding: 0 20px;
+    margin: 120px 0 0 0;
+  }
+  body section.success-message img {
+    width: 52px;
+  }
+  body section.success-message p {
+    font: 400 18px "Roboto", sans-serif;
+  }
+  body section.success-message button {
+    margin: 100% 0 0 0;
   }
   body footer {
     width: 100%;

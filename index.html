@@ -10,19 +10,23 @@
 </head>
 
 <body>
+  <!-- Newsletter block -->
   <section class="newsletter">
     <!-- Left side -->
     <div class="newsletter-left-side">
       <h1>Stay updated!</h1>
-      <p>Join 60,000+ product managers receiving monthly updates on:</p>
+      <p class="desc">Join 60,000+ product managers receiving monthly updates on:</p>
       <ul>
         <li><img src="assets/images/icon-list.svg" alt="icon list">Product discovery and building what matters</li>
         <li><img src="assets/images/icon-list.svg" alt="icon list">Measuring to ensure updates are a success</li>
         <li><img src="assets/images/icon-list.svg" alt="icon list">And much more!</li>
       </ul>
-      <form id="newsletter">
-        <label for="email">Email address</label>
-        <input type="email" id="newsletter-email" placeholder="email@company.com">
+      <form id="newsletter" novalidate>
+        <div class="label-message">
+          <label for="email">Email address</label>
+          <p id="error-message">Valid email required</p>
+        </div>
+        <input type="email" id="newsletter-input-email" placeholder="email@company.com">
         <button>Subscribe to monthly newsletter</button>
       </form>
     </div>
@@ -33,24 +37,24 @@
     </div>
   </section>
 
-  <!-- Success message start
+  <!-- Success message block -->
+  <section class="success-message">
+    <img src="assets/images/icon-list.svg" alt="icon list">
+    <h1>Thanks for subscribing!</h1>
+    <p class="desc">A confirmation email has been sent to <span id="email-registered"></span>. Please open it and click the button
+      inside to confirm your subscription.</p>
+    <button id="dismiss-button">Dismiss message</button>
+  </section>
 
-  Thanks for subscribing!
-
-  A confirmation email has been sent to ash@loremcompany.com.
-  Please open it and click the button inside to confirm your subscription.
-
-  Dismiss message
-
-  Success message end -->
-
+  <!-- Footer -->
   <footer class="attribution">
     <p>
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="https://github.com/ThibautMilville">Thibaut MILVILLE</a>.
+      Coded by <a href="https://github.com/ThibautMilville">Thibaut MILVILLE</a>.
     </p>
-    
   </footer>
+  
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 
